@@ -4,6 +4,7 @@
 FROM centos:7
 MAINTAINER justice-love (eddyxu1213@126.com)
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN echo 'Asia/Shanghai' > /etc/timezone
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
