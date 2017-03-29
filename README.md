@@ -13,5 +13,11 @@ ADD web-1.0-SNAPSHOT.jar /usr/local/web/
 RUN rpm -ivh /usr/local/jdk-8u121-linux-x64.rpm
 EXPOSE 8090
 WORKDIR /usr/local/web/
-ENTRYPOINT java -Dspring.profiles.active=pro -Dstock.im.token=mine_token -Dserver.port=8090 -Dstock.login.password=mine_passwd -Dlogging.path=/usr/local/web/logs -jar web-1.0-SNAPSHOT.jar
+ENV TOKEN token
+ENV PORT 8090
+ENV LOG_DIR /usr/local/web/logs
+ENV PASSWD pwd
+ENV PROFILE pro
+CMD java -Dspring.profiles.active=${PROFILE} -Dstock.im.mainToken=${TOKEN} -Dserver.port=${PORT} -Dlogging.path=${LOG_DIR} -Dstock.login.password=${PASSWD} -jar web-1.0-SNAPSHOT.jar
+
 ```
